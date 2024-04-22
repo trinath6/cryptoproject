@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+        background-color: rgb(255, 208, 172);
+        background-image: url("https://img.freepik.com/premium-photo/abstract-virtual-financial-graph-hologram-blurry-contemporary-office-building-background-financial-trading-concept-multiexposure_258654-3411.jpg");
+        background-repeat: no-repeat;   
+        background-size: cover; 
+    }
+
+       .box{
+        margin-left:auto;
+        margin-right: auto;
+        margin-top:50px;
+        width:40em;
+        display: flex;
+        flex-direction:column;
+        align-items: center;
+        justify-content: center;
+        color: rgb(0, 0, 0);
+        background-color:#1679ab80;
+        border-radius: 30px;
+       }
+       span{
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        color: rgb(241, 99, 33);
+        }
+       
+    </style>
+</head>
+<body>
+
+            <div class="box">
+                
+                <img  height="200px" width="200px"/>
+                <h1>CURRENT PRICE:<span class="current"></span></h1>
+                <h3>High in 24H:<span class="high"></span></h3>
+                <h3>low in 24H:<span class="low"></span></h3>
+                <h3>price change in 24H:<span class="change"></span></h3>
+                <h3>market cap change:<span class="marketchange"></span></h3>
+                <h3>circulating supply<span class="circulatingsupply"></span></h3>
+                <h3>total supply:<span class="totalsupply"></span></h3>
+                <h3>max supply:<span class="maxsupply"></span></h3>
+                <h3>last updated:<span class="update"></span></h3> 
+            </div> 
+
+    <script>
+        let getcurrent=document.getElementsByClassName("current")
+        let gethigh=document.getElementsByClassName("high")
+        let getlow=document.getElementsByClassName("low")
+        let getchange=document.getElementsByClassName("change")
+        let getmarket=document.getElementsByClassName("marketchange")
+        let getcirculating=document.getElementsByClassName("circulatingsupply")
+        let gettotal=document.getElementsByClassName("totalsupply")
+        let getmaxsupply=document.getElementsByClassName("maxsupply")
+        let getupdate=document.getElementsByClassName("update")
+
+
+        let grph=JSON.parse(window.localStorage.getItem("data"))
+        console.log(grph)
+
+        let getimg=document.getElementsByTagName("img")
+        getimg[0].setAttribute("src",grph.image)
+
+        getcurrent[0].innerHTML=`${grph.current_price}`
+        gethigh[0].innerHTML=`${grph.high_24h}`
+        getlow[0].innerHTML=`${grph.low_24h}`
+        getchange[0].innerHTML=`${grph.price_change_24h}`
+        getmarket[0].innerHTML=`${grph.market_cap_change_24h}`
+        getcirculating[0].innerHTML=`${grph.circulating_supply}`
+        gettotal[0].innerHTML=`${grph.total_supply}`
+        getmaxsupply[0].innerHTML=`${grph.max_supply}`
+        getupdate[0].innerHTML=`${grph.last_updated}`
+         
+    </script>
+</body>
+</html>
